@@ -1,7 +1,7 @@
 # lein-remote-swank
 
 This Leiningen plugin lets you launch a swank server on a remote machine via
-Leiningen. Simply add [leiningen/lein-remote-swank "0.0.1"] to your
+Leiningen. Simply add [lein-remote-swank/lein-remote-swank "0.0.1"] to your
 :dev-dependencies in project.clj and run `lein remote-swank host` to start the
 server. Then from Emacs run M-x slime-connect to connect to your project.
 
