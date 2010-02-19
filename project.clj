@@ -3,6 +3,7 @@
   :dependencies [[swank-clojure "1.1.0"]
                  [org.apache.maven/maven-ant-tasks "2.0.10"]
                  [org.clojure/clojure-contrib "1.1.0-master-SNAPSHOT"]
+		 [org.apache.commons/commons-exec "1.0.1"]
 		 [crane "1.0-SNAPSHOT"
 		  :exclusions
 		  [net.java.dev.jets3t/jets3t
