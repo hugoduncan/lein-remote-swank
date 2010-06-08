@@ -1,0 +1,4 @@
+2010-06-07  Hugo Duncan  <hugo_duncan@yahoo.com>
+
+	* src/leiningen/remote_swank.clj: removed uberjar option, made 1.1/1.2 agnostic, switched to clj-ssh, added a :strict-host-key-checking option for project.clj (taking a boolean), removed clojure from dependencies
+
