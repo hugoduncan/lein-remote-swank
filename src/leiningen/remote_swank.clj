@@ -52,7 +52,7 @@
         (println (:out rv)))
       (ssh/with-ssh-agent []
         (println (:out rv))
-        (ssh/add-identity private-key)
+        (ssh/add-identity-with-keychain private-key)
         (let [session (ssh/session
                        ssh/*ssh-agent*
                        server
@@ -60,10 +60,15 @@
                        (if (:strict-host-key-checking project false) "yes" "no"))]
           (ssh/with-connection session
             (println "Starting remote lein swank ...")
-            (let [{:keys [out err exit]} (ssh/ssh
-                                          session
-                                          (format "cd %s/%s && lein swank"
-                                                  remote-path (:name project)))]
+            (let [rv (ssh/ssh
+                      session
+                      (format "cd %s/%s && lein swank" remote-path (:name project))
+                      :return-map true)
+                  out (:out rv)
+                  err (:err rv)
+                  exit (:exit rv)]
+              (if (pos? exit)
+                (println "ERROR: " err))
               (clojure.contrib.pprint/pprint (seq (.split #"\r?\n" out))))))))))
 
 (defn remote-swank
